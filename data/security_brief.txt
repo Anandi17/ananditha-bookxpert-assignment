@@ -1,0 +1,7 @@
+Security Brief: Access Control
+
+All production systems require multi-factor authentication. Administrator access is reviewed every quarter by the security team. Temporary elevated access expires automatically after 24 hours unless renewed by a system owner.
+
+Incident severity is classified from SEV1 to SEV4. A SEV1 incident means critical customer impact or active data exposure. SEV1 incidents require immediate executive notification and a written postmortem within five business days.
+
+Backups are encrypted at rest and tested monthly through restore drills.

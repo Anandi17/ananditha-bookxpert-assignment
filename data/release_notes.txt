@@ -1,0 +1,7 @@
+Release Notes: Version 2.4
+
+Version 2.4 added dashboard filters, CSV export for reports, and faster workspace search. Search latency improved by approximately 35 percent on workspaces with more than 50,000 notes.
+
+The release also fixed a bug where archived notebooks appeared in the mobile quick switcher. A known limitation remains: comments are not included in CSV exports.
+
+Version 2.4 was released on May 12, 2026.

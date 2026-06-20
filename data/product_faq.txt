@@ -1,0 +1,7 @@
+Nimbus Notes Product FAQ
+
+Nimbus Notes is a collaborative note-taking application for research teams. It supports shared notebooks, threaded comments, document tagging, and export to PDF or Markdown.
+
+The free plan allows up to 3 notebooks and 100 megabytes of storage. The team plan includes unlimited notebooks, 2 terabytes of shared storage, SSO, audit logs, and priority support.
+
+Nimbus Notes keeps deleted notes in the workspace trash for 30 days before permanent deletion.

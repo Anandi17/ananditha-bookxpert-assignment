@@ -1,0 +1,7 @@
+Research Summary: Customer Support Automation
+
+A pilot project tested an AI assistant for customer support triage. The assistant categorized incoming tickets, suggested knowledge base articles, and routed complex issues to human agents.
+
+During the six-week pilot, first response time decreased from 8 hours to 2 hours. Human agents reported that the assistant was most helpful for password reset, billing status, and product navigation requests.
+
+The research team recommended expanding the pilot only after improving escalation detection for angry or high-risk customers.
