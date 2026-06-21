@@ -61,20 +61,25 @@ def chunk_extracted_pages(pages: list[dict], chunk_size: int = 1000, chunk_overl
 
     return chunks
 
-import os
 import chromadb
 from chromadb.utils.embedding_functions import GoogleGenerativeAiEmbeddingFunction
 from dotenv import load_dotenv
 
 load_dotenv()
-api_key = os.getenv("GEMINI_API_KEY")
+from .config import (
+    GEMINI_API_KEY,
+    GEMINI_EMBEDDING_MODEL,
+    COLLECTION_NAME,
+)
+
+api_key = GEMINI_API_KEY
 
 def save_to_vector_db(chunks: list[dict], db_path: str = "./db"):
     """
     Embeds text chunks and saves them into a persistent disk-based ChromaDB.
     """
     # Create persistent ChromaDB client
-    client = chromadb.PersistentClient(path=db_path)
+    client = chromadb.PersistentClient(path=str(DB_DIR))
 
     # Initialize the Gemini embedding function
     embedding_fn = GoogleGenerativeAiEmbeddingFunction(
