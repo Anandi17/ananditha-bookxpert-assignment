@@ -3,10 +3,17 @@ import google.generativeai as genai
 import chromadb
 from chromadb.utils.embedding_functions import GoogleGenerativeAiEmbeddingFunction
 
-from dotenv import load_dotenv
-load_dotenv()
-api_key = os.getenv("GEMINI_API_KEY")
-genai.configure(api_key=api_key)
+from .config import (
+    GEMINI_API_KEY,
+    GEMINI_EMBEDDING_MODEL,
+    GEMINI_GENERATION_MODEL,
+    DB_DIR,
+    COLLECTION_NAME,
+)
+
+api_key = GEMINI_API_KEY
+if api_key:
+    genai.configure(api_key=api_key)
 
 def query_rag_pipeline(user_query: str, db_path: str = "./db", k: int = 3) -> dict:
     """
@@ -15,11 +22,11 @@ def query_rag_pipeline(user_query: str, db_path: str = "./db", k: int = 3) -> di
     client = chromadb.PersistentClient(path=db_path)
     embedding_fn = GoogleGenerativeAiEmbeddingFunction(
         api_key=api_key,
-        model_name="models/text-embedding-004"
+        model_name=GEMINI_EMBEDDING_MODEL
     )
 
     collection = client.get_collection(
-        name="document_knowledge_base",
+        name=COLLECTION_NAME
         embedding_function=embedding_fn
     )
 
@@ -61,7 +68,9 @@ def query_rag_pipeline(user_query: str, db_path: str = "./db", k: int = 3) -> di
     )
 
     # Call Gemini to generate the answer
-    model = genai.GenerativeModel('gemini-2.5-flash-preview-09-2025')
+    model = genai.GenerativeModel(
+    GEMINI_GENERATION_MODEL
+    )
     response = model.generate_content(prompt)
 
     return {
