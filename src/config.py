@@ -28,5 +28,6 @@ GEMINI_GENERATION_MODEL = os.getenv(
 def require_api_key():
     if not GEMINI_API_KEY:
         raise RuntimeError(
-            "GEMINI_API_KEY is not set. Copy .env.example to .env and add your key."
+            "GEMINI_API_KEY is missing. Add it to Streamlit Secrets."
         )
+    return GEMINI_API_KEY
