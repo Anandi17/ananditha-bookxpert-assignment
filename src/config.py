@@ -1,6 +1,8 @@
 from __future__ import annotations
 
+import streamlit as st
 import os
+
 from pathlib import Path
 
 from dotenv import load_dotenv
