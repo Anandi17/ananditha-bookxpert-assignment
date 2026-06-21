@@ -5,7 +5,6 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
-
 load_dotenv()
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -24,11 +23,8 @@ GEMINI_GENERATION_MODEL = os.getenv(
     "gemini-2.5-flash-preview-09-2025",
 )
 
-
-def require_api_key() -> str:
-    """Return the Gemini API key or raise a clear setup error."""
+def require_api_key():
     if not GEMINI_API_KEY:
         raise RuntimeError(
             "GEMINI_API_KEY is not set. Copy .env.example to .env and add your key."
         )
-    return GEMINI_API_KEY
