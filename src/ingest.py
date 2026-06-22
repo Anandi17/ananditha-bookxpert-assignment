@@ -84,7 +84,7 @@ def save_to_vector_db(chunks: list[dict], db_path: str = "./db"):
     # Initialize the Gemini embedding function
     embedding_fn = GoogleGenerativeAiEmbeddingFunction(
         api_key=api_key,
-        model_name=GEMINI_EMBEDDING_MODEL,
+        model_name="models/text-embedding-004",
     )
 
     # Create or fetch collection
