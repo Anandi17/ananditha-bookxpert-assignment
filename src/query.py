@@ -22,18 +22,18 @@ def query_rag_pipeline(user_query: str, db_path: str = "./db", k: int = 3) -> di
     client = chromadb.PersistentClient(path=str(DB_DIR))
     embedding_fn = GoogleGenerativeAiEmbeddingFunction(
         api_key=api_key,
-        model_name=GEMINI_EMBEDDING_MODEL
+        model_name=GEMINI_EMBEDDING_MODEL,
     )
 
-    collection = client.get_collection(
-        name=COLLECTION_NAME,
-        embedding_function=embedding_fn,
+    collection = client.get_or_create_collection(
+    name=COLLECTION_NAME,
+    embedding_function=embedding_fn,
     )
 
     # Query collection for top k closest results
     results = collection.query(
         query_texts=[user_query],
-        n_results=k
+        n_results=k,
     )
 
     # Format the retrieved documents as background context
@@ -69,7 +69,7 @@ def query_rag_pipeline(user_query: str, db_path: str = "./db", k: int = 3) -> di
 
     # Call Gemini to generate the answer
     model = genai.GenerativeModel(
-    GEMINI_GENERATION_MODEL
+    GEMINI_GENERATION_MODEL,
     )
     response = model.generate_content(prompt)
 
