@@ -70,6 +70,7 @@ def query_rag_pipeline(user_query: str, db_path: str = "./db", k: int = 3) -> di
     # Call Gemini to generate the answer
     model = genai.GenerativeModel(
     GEMINI_GENERATION_MODEL,
+    "gemini-2.5-flash-preview-09-2025",
     )
     response = model.generate_content(prompt)
 
