@@ -22,7 +22,7 @@ def query_rag_pipeline(user_query: str, db_path: str = "./db", k: int = 3) -> di
     client = chromadb.PersistentClient(path=str(DB_DIR))
     embedding_fn = GoogleGenerativeAiEmbeddingFunction(
         api_key=api_key,
-        model_name="models/text-embedding-004",
+        model_name=GEMINI_EMBEDDING_MODEL,
     )
 
     collection = client.get_or_create_collection(
