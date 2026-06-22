@@ -84,12 +84,12 @@ def save_to_vector_db(chunks: list[dict], db_path: str = "./db"):
     # Initialize the Gemini embedding function
     embedding_fn = GoogleGenerativeAiEmbeddingFunction(
         api_key=api_key,
-        model_name="models/text-embedding-004"
+        model_name=GEMINI_EMBEDDING_MODEL,
     )
 
     # Create or fetch collection
     collection = client.get_or_create_collection(
-        name="document_knowledge_base",
+        name=COLLECTION_NAME,
         embedding_function=embedding_fn,
         metadata={"hnsw:space": "cosine"} # Use Cosine Distance
     )
