@@ -19,15 +19,15 @@ def query_rag_pipeline(user_query: str, db_path: str = "./db", k: int = 3) -> di
     """
     Searches the database, builds a grounded prompt, and queries the LLM.
     """
-    client = chromadb.PersistentClient(path=db_path)
+    client = chromadb.PersistentClient(path=str(DB_DIR))
     embedding_fn = GoogleGenerativeAiEmbeddingFunction(
         api_key=api_key,
         model_name=GEMINI_EMBEDDING_MODEL
     )
 
     collection = client.get_collection(
-        name=COLLECTION_NAME
-        embedding_function=embedding_fn
+        name=COLLECTION_NAME,
+        embedding_function=embedding_fn,
     )
 
     # Query collection for top k closest results
